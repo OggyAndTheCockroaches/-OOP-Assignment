@@ -101,3 +101,6 @@ D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\dynamic_timetable\d
 D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\dynamic_timetable\dynamic_timetable\bin\Debug\ru\DevExpress.XtraScheduler.v15.1.Core.resources.dll
 D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\dynamic_timetable\dynamic_timetable\obj\Debug\dynamic_timetable.StartupForm.resources
 D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\dynamic_timetable\dynamic_timetable\bin\Debug\dynamic_timetable.exe.config
+D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\-OOP-Assignment\dynamic_timetable\dynamic_timetable\bin\Debug\dynamic_timetable.exe.config
+D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\-OOP-Assignment\dynamic_timetable\dynamic_timetable\obj\Debug\dynamic_timetable.exe
+D:\ti's\semester151\ObjectOrientedProgramming\C#\assignment1\-OOP-Assignment\dynamic_timetable\dynamic_timetable\obj\Debug\dynamic_timetable.pdb
