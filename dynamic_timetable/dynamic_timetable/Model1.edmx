@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TimetableModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdvancedSearch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Phrase" Type="ntext" />
+        </EntityType>
+        <EntityType Name="CourseInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseCode" Type="varchar" MaxLength="10" />
+          <Property Name="CourseName" Type="ntext" />
+          <Property Name="ClassCode" Type="varchar" MaxLength="10" />
+          <Property Name="GroupCode" Type="varchar" MaxLength="10" />
+          <Property Name="Week_day" Type="int" />
+          <Property Name="FirstPeriod" Type="int" />
+          <Property Name="NumberOfPeriod" Type="int" />
+          <Property Name="Room" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Link_Path">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OrderOfFields">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Field" Type="ntext" />
+          <Property Name="Order_" Type="int" />
+        </EntityType>
+        <EntityContainer Name="TimetableModelStoreContainer">
+          <EntitySet Name="AdvancedSearch" EntityType="Self.AdvancedSearch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseInfo" EntityType="Self.CourseInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Link_Path" EntityType="Self.Link_Path" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderOfFields" EntityType="Self.OrderOfFields" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TimetableModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdvancedSearch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phrase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CourseInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CourseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClassCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GroupCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Week_day" Type="Int32" />
+          <Property Name="FirstPeriod" Type="Int32" />
+          <Property Name="NumberOfPeriod" Type="Int32" />
+          <Property Name="Room" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Link_Path">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderOfField">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Field" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Order_" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="TimetableEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdvancedSearches" EntityType="Self.AdvancedSearch" />
+          <EntitySet Name="CourseInfoes" EntityType="Self.CourseInfo" />
+          <EntitySet Name="Link_Path" EntityType="Self.Link_Path" />
+          <EntitySet Name="OrderOfFields" EntityType="Self.OrderOfField" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TimetableModelStoreContainer" CdmEntityContainer="TimetableEntities">
+          <EntitySetMapping Name="AdvancedSearches">
+            <EntityTypeMapping TypeName="TimetableModel.AdvancedSearch">
+              <MappingFragment StoreEntitySet="AdvancedSearch">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Phrase" ColumnName="Phrase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseInfoes">
+            <EntityTypeMapping TypeName="TimetableModel.CourseInfo">
+              <MappingFragment StoreEntitySet="CourseInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Week_day" ColumnName="Week_day" />
+                <ScalarProperty Name="FirstPeriod" ColumnName="FirstPeriod" />
+                <ScalarProperty Name="NumberOfPeriod" ColumnName="NumberOfPeriod" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Link_Path">
+            <EntityTypeMapping TypeName="TimetableModel.Link_Path">
+              <MappingFragment StoreEntitySet="Link_Path">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderOfFields">
+            <EntityTypeMapping TypeName="TimetableModel.OrderOfField">
+              <MappingFragment StoreEntitySet="OrderOfFields">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Field" ColumnName="Field" />
+                <ScalarProperty Name="Order_" ColumnName="Order_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

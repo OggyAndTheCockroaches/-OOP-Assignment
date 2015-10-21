@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.text.pdf.parser;
 
 namespace dynamic_timetable
 {
