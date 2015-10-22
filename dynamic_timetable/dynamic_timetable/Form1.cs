@@ -8,9 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
-using iTextSharp.text.pdf.parser;
 
 namespace dynamic_timetable
 {
@@ -29,9 +26,16 @@ namespace dynamic_timetable
         private void FirstGrid()
         {
             DataTable temp = new DataTable();
-            for(int i = 1; i <= 16; i++)
+            temp.Columns.Add(new DataColumn("Period"));
+            temp.Columns.Add(new DataColumn("Monday"));
+            temp.Columns.Add(new DataColumn("Tuesday"));
+            temp.Columns.Add(new DataColumn("Wednesday"));
+            temp.Columns.Add(new DataColumn("Thursday"));
+            temp.Columns.Add(new DataColumn("Friday"));
+            for (int i = 1; i <= 16; i++)
             {
                 DataRow row = temp.NewRow();
+                row["Period"] = i;
                 temp.Rows.Add(row);
             }
             TimetablegridControl.DataSource = temp;
@@ -136,10 +140,18 @@ namespace dynamic_timetable
             AdvanceTab.Show();
         }
 
-        private void Period_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        private void ExportButton_Click(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (e.Info.IsRowIndicator && e.RowHandle >= 0)
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = folderBrowserDialog1.SelectedPath;
+                path += "\\MyTimetable.pdf";
+                TimetablegridControl.ExportToPdf(path);
+                if(MessageBox.Show("Open MyTimetable.pdf?", "Already exported!", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== System.Windows.Forms.DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(path);
+                }
+            }
         }
     }
 }

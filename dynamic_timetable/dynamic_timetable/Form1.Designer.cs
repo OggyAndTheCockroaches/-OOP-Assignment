@@ -105,11 +105,6 @@
             this.ClearcourseButton = new DevExpress.XtraEditors.SimpleButton();
             this.TimetablegridControl = new DevExpress.XtraGrid.GridControl();
             this.TimetableGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.Monday = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Tuesday = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Wednesday = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Thursday = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Friday = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TabControl = new DevExpress.XtraTab.XtraTabControl();
             this.ScheduleTab = new DevExpress.XtraTab.XtraTabPage();
             this.AdvanceTab = new DevExpress.XtraTab.XtraTabPage();
@@ -140,6 +135,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.UploadLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -452,6 +448,7 @@
             this.ExportButton.ItemAppearance.Pressed.Options.UseFont = true;
             this.ExportButton.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
             this.ExportButton.Name = "ExportButton";
+            this.ExportButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportButton_Click);
             // 
             // barEditItem1
             // 
@@ -1014,83 +1011,16 @@
             // 
             this.TimetableGrid.Appearance.GroupPanel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.TimetableGrid.Appearance.GroupPanel.Options.UseFont = true;
-            this.TimetableGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.Monday,
-            this.Tuesday,
-            this.Wednesday,
-            this.Thursday,
-            this.Friday});
             this.TimetableGrid.GridControl = this.TimetablegridControl;
             this.TimetableGrid.GroupPanelText = "My Timetable";
-            this.TimetableGrid.IndicatorWidth = 35;
             this.TimetableGrid.Name = "TimetableGrid";
+            this.TimetableGrid.OptionsBehavior.Editable = false;
             this.TimetableGrid.OptionsCustomization.AllowColumnMoving = false;
             this.TimetableGrid.OptionsCustomization.AllowFilter = false;
             this.TimetableGrid.OptionsCustomization.AllowGroup = false;
             this.TimetableGrid.OptionsCustomization.AllowQuickHideColumns = false;
             this.TimetableGrid.OptionsCustomization.AllowSort = false;
             this.TimetableGrid.OptionsView.ShowFooter = true;
-            this.TimetableGrid.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.Period_CustomDrawRowIndicator);
-            // 
-            // Monday
-            // 
-            this.Monday.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Monday.AppearanceCell.Options.UseFont = true;
-            this.Monday.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Monday.AppearanceHeader.Options.UseFont = true;
-            this.Monday.Caption = "Monday";
-            this.Monday.Name = "Monday";
-            this.Monday.Visible = true;
-            this.Monday.VisibleIndex = 0;
-            this.Monday.Width = 106;
-            // 
-            // Tuesday
-            // 
-            this.Tuesday.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Tuesday.AppearanceCell.Options.UseFont = true;
-            this.Tuesday.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Tuesday.AppearanceHeader.Options.UseFont = true;
-            this.Tuesday.Caption = "Tuesday";
-            this.Tuesday.Name = "Tuesday";
-            this.Tuesday.Visible = true;
-            this.Tuesday.VisibleIndex = 1;
-            this.Tuesday.Width = 106;
-            // 
-            // Wednesday
-            // 
-            this.Wednesday.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Wednesday.AppearanceCell.Options.UseFont = true;
-            this.Wednesday.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Wednesday.AppearanceHeader.Options.UseFont = true;
-            this.Wednesday.Caption = "Wednesday";
-            this.Wednesday.Name = "Wednesday";
-            this.Wednesday.Visible = true;
-            this.Wednesday.VisibleIndex = 2;
-            this.Wednesday.Width = 106;
-            // 
-            // Thursday
-            // 
-            this.Thursday.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Thursday.AppearanceCell.Options.UseFont = true;
-            this.Thursday.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Thursday.AppearanceHeader.Options.UseFont = true;
-            this.Thursday.Caption = "Thursday";
-            this.Thursday.Name = "Thursday";
-            this.Thursday.Visible = true;
-            this.Thursday.VisibleIndex = 3;
-            this.Thursday.Width = 106;
-            // 
-            // Friday
-            // 
-            this.Friday.AppearanceCell.Font = new System.Drawing.Font("Arial", 10F);
-            this.Friday.AppearanceCell.Options.UseFont = true;
-            this.Friday.AppearanceHeader.Font = new System.Drawing.Font("Arial", 10F);
-            this.Friday.AppearanceHeader.Options.UseFont = true;
-            this.Friday.Caption = "Friday";
-            this.Friday.Name = "Friday";
-            this.Friday.Visible = true;
-            this.Friday.VisibleIndex = 4;
-            this.Friday.Width = 106;
             // 
             // TabControl
             // 
@@ -1786,11 +1716,7 @@
         private DevExpress.XtraBars.BarEditItem CoursenameBar;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraGrid.GridControl TimetablegridControl;
-        private DevExpress.XtraGrid.Columns.GridColumn Tuesday;
-        private DevExpress.XtraGrid.Columns.GridColumn Wednesday;
-        private DevExpress.XtraGrid.Columns.GridColumn Thursday;
-        private DevExpress.XtraGrid.Columns.GridColumn Friday;
-        private DevExpress.XtraGrid.Columns.GridColumn Monday;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 
